@@ -1,1 +1,1 @@
-## Lectures and seeminars on Java.
+## Lectures and seminars on Java.
