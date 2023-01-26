@@ -25,8 +25,8 @@ public class task02_v2 {
 
     public static int[] bubbleSort(int[] arr){
         int tmp;
-        int col = arr.length;
-        for (int i = 0; i < col; i++) {
+
+        for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     tmp = arr[j + 1];
