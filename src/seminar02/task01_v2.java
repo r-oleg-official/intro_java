@@ -11,7 +11,6 @@
 
 package seminar02;
 
-import javax.swing.text.html.parser.Parser;
 import java.util.Arrays;
 
 public class task01_v2 {
