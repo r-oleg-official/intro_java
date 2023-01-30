@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-01-28T16:02:40.232120843Z</date>
+  <millis>1674921760232</millis>
+  <nanos>120843</nanos>
+  <sequence>0</sequence>
+  <logger>lecture02.Ex005_Logger</logger>
+  <level>WARNING</level>
+  <class>lecture02.Ex005_Logger</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Тестовое логгирование 1</message>
+</record>
+<record>
+  <date>2023-01-28T16:02:40.285509727Z</date>
+  <millis>1674921760285</millis>
+  <nanos>509727</nanos>
+  <sequence>1</sequence>
+  <logger>lecture02.Ex005_Logger</logger>
+  <level>INFO</level>
+  <class>lecture02.Ex005_Logger</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Тестовое логгирование 2</message>
+</record>
+</log>
