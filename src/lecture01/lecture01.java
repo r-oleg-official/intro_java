@@ -559,7 +559,7 @@ public class lecture01 {
         System.out.println("Работа с файлами");
 
         // Record to the new file, don't rewrite
-        try (FileWriter fw = new FileWriter("file.txt", false)){
+        try (FileWriter fw = new FileWriter("src/lecture01/file.txt", false)){
             fw.write("line 1");
             fw.append('\n');
             fw.append('2');
@@ -574,7 +574,7 @@ public class lecture01 {
 
     public static void readChars() throws Exception {
         // Read from the file, by chars (посимвольно).
-        FileReader fr = new FileReader("file.txt");
+        FileReader fr = new FileReader("src/lecture01/file.txt");
         int c;
         while ((c = fr.read()) != -1) {
             char ch = (char) c;
@@ -588,7 +588,7 @@ public class lecture01 {
 
     public static void readLines() throws Exception {
         // Read from th file, by lines. (построчно)
-        BufferedReader br = new BufferedReader(new FileReader("file.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("src/lecture01/file.txt"));
         String str;
         while ((str = br.readLine()) != null) {
             System.out.printf("== %s ==\n", str);
