@@ -9,7 +9,7 @@
  * Copyright notice: by Oleg Razumov.
  */
 
-package seminar01;
+package seminar01_v2;
 
 public class task03_v2 {
 
