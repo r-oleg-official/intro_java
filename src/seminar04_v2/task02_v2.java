@@ -47,15 +47,15 @@ public class task02_v2 {
 
             sum = a + b + tmp;
             if (sum < 9) {
-                d3.add(sum);
+                d3.addFirst(sum);
                 tmp = 0;
             }
             if (sum > 9) {
-                d3.add(sum % 10);
+                d3.addFirst(sum % 10);
                 tmp = sum /= 10;
             }
             size--;
-            if (size == 0) d3.add(sum);
+            if (size == 0) d3.addFirst(sum);
         }
         return d3;
     }
