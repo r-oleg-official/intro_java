@@ -42,19 +42,20 @@ public class task02_v2 {
 
         int sum, tmp = 0;
         while (size > 0) {
-            int a = d1.pollLast();
-            int b = d2.pollLast();
+            int a = d1.pollFirst();
+            int b = d2.pollFirst();
 
             sum = a + b + tmp;
             if (sum < 9) {
-                d3.addFirst(sum);
+                d3.add(sum);
                 tmp = 0;
-            } else  {
-                d3.addFirst(sum % 10);
+            }
+            if (sum > 9) {
+                d3.add(sum % 10);
                 tmp = sum /= 10;
             }
             size--;
-            if (size == 0) d3.addFirst(sum);
+            if (size == 0) d3.add(sum);
         }
         return d3;
     }
