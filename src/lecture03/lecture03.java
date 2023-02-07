@@ -2,6 +2,7 @@ package lecture03;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import static java.util.Arrays.*;
@@ -95,7 +96,6 @@ class  Ex06_Method {
         }
 }
 
-
 class  Ex07_ArraysMethod {
     public static void main(String[] args) {
         StringBuilder day = new StringBuilder("29");
@@ -108,4 +108,51 @@ class  Ex07_ArraysMethod {
         System.out.println(d);  // [29, 09, 1990]
     }
 }
+
+class  Ex08_ListOf {
+    public static void main(String[] args) {
+        Character value = null;
+        List<Character> list1 = List.of('S', 'e', 'r', 'g', 'e', 'y');
+        System.out.println(list1);
+        // list1.remove(1);     // java.lang.UnsupportedOperationException
+        List<Character> list2 = List.copyOf(list1);
+        System.out.println(list2);
+    }
+}
+
+class  Ex09_ListOf {
+    public static void main(String[] args) {
+        Character value = null;
+        List<Character> list1 = new ArrayList<Character>();
+        list1.add('S');
+        list1.add('e');
+        list1.add('r');
+        System.out.println(list1);
+        list1.remove(1);
+        List<Character> list2 = List.copyOf(list1);
+        System.out.println(list2);
+    }
+}
+
+class  Ex10_Iterator {
+    public static void main(String[] args) {
+        List<Integer> list = List.of(1, 12, 123, 1234, 12345);
+
+        for (int item: list) {
+            System.out.println(item);
+        }
+
+        Iterator<Integer> col = list.iterator();
+        System.out.println();
+
+        while (col.hasNext()) {
+            System.out.println(col.next());
+            //col.next();   // java.util.NoSuchElementException
+            //col.remove();   // java.lang.UnsupportedOperationException
+        }
+    }
+}
+
+
+
 
