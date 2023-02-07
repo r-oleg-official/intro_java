@@ -1,5 +1,11 @@
 package lecture03;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.util.Arrays.*;
+
 public class lecture03 {
 
 }
@@ -45,13 +51,61 @@ class Ex03_object {
         for (int j: b) { System.out.printf("%d ", j); }
         // 0 9 0 0 0 0 0 0 0 0
     }
+}
 
+class Ex04_object {
+    static int[] AddItem(int[] array, int item) {
+        int length = array.length;
+        int[] temp = new int[length + 1];
+        System.arraycopy(array, 0, temp, 0, length);
+        temp[length] = item;
+        return temp;
+    }
+    public static void main(String[] args) {
+        int[] a = new int[] {0, 9};
+        for (int i : a) { System.out.printf("%d ", i); }    // 0 9
+        a = AddItem(a, 2);
+        a = AddItem(a, 3);
+        for (int j : a) { System.out.printf("%d ", j); }    // 0 9 2 3
+    }
+}
+
+class  Ex05_ArrayList {
+    public static void main(String[] args) {
+        // List list = new ArrayList(); // через Object
+        // or
+        // ArrayList list = new ArrayList();
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(2809);
+
+        for (Object o: list) {
+            System.out.println(o);
+        }
+    }
+}
+
+class  Ex06_Method {
+    public static void main(String[] args) {
+        int day = 29;
+        int month = 9;
+        int year = 1990;
+        Integer[] date = {day, month, year};
+        List<Integer> d = Arrays.asList(date);
+        System.out.println(d);  // [29, 9, 1990]
+        }
 }
 
 
-
-
-
-
-
+class  Ex07_ArraysMethod {
+    public static void main(String[] args) {
+        StringBuilder day = new StringBuilder("29");
+        StringBuilder month = new StringBuilder("9");
+        StringBuilder year = new StringBuilder("1990");
+        StringBuilder[] date = new StringBuilder[]{day, month, year};
+        List<StringBuilder> d = Arrays.asList(date);
+        System.out.println(d);  // [29, 9, 1990]
+        date[1] = new StringBuilder("09");
+        System.out.println(d);  // [29, 09, 1990]
+    }
+}
 
