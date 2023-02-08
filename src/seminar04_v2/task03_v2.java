@@ -1,3 +1,14 @@
+/*
+
+ * Classname: Task-3_v2
+ *
+ * Version: 1.
+ *
+ * Date: 2023-01-29.
+ *
+ * Copyright notice: by Oleg Razumov.
+ */
+
 package seminar04_v2;
 
 import java.util.ArrayDeque;
