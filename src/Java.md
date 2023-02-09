@@ -58,6 +58,26 @@ String - ссылочный тип.
 * \w 	A word character: [a-zA-Z_0-9]
 * \W 	A non-word character: [^\w]
 
+## Circles.
+### 1. for. Snippet - `fori`
+
+    for (int i = 0; i < size_iterable_object; i++) {
+            block_code;
+        }
+
+### 2. for each. Snippet - `foreach`
+    
+    for (type var: iterable_object) {
+        block_code;
+    }
+
+Other form:
+
+    for (int i:
+         iterable_object) {
+        block_code;
+    }
+
 ## Arrays.
 ### Одномерные массивы.
 #### Объявление массива.
@@ -70,10 +90,13 @@ String - ссылочный тип.
 > Означает отсутствие элемента. У массива есть вместимость (capcity) и фактическое кол-во элементов, 
 > вы возвращаете второй. Все, что после того, что вы вернули считается мусором.
     
-Если нужен символ то к нему обращаются:
+Если нужен символ, то к нему обращаются:
     
     s.charAt(2)
 
+Получение значения эл-та массива в `String` с индексом `2`:
+
+    String.valueOf(array[2])
 
 ### Двумерные массивы.
 #### Объявление массива.
@@ -84,6 +107,26 @@ String - ссылочный тип.
 * [Класс ArrayList](https://javarush.ru/groups/posts/klass-arraylist)
 * [Удаление элемента из списка ArrayList](https://javarush.ru/groups/posts/1935-udalenie-ehlementa-iz-spiska-arraylist)
 
+## List.
+### Methods.
+* **.size()** - размер списка
+* **.get(i)** - получить значение i-го эл-та 
+
+### Copy List.
+#### 1. Collections.
+
+      List<Integer> destination = Arrays.asList(1, 2, 3, 4, 5);
+      List<Integer> source = Arrays.asList(11, 22, 33);
+      Collections.copy(destination, source);
+
+#### 2. addAll()
+
+    List<Integer> destination = new ArrayList<>();
+    destination.addAll(source);
+
+#### 3. Java 10
+
+    List<Integer> destination = List.copyOf(sourceList);    
 
 ## Преобразования.
 
@@ -120,6 +163,64 @@ String - ссылочный тип.
             writer.write("hello");
             writer.flush();
     }
+
+## Map. Карта/словарь.
+Пример карты, где ключ - `Integer`, значение - `String`:
+
+    Map<Integer, String> map = new HashMap<>(); // пустая карта
+    Map<String, String> map = new HashMap<>(other_collection); // 
+
+Пример. В словарь `counter` добавить ключ = имя, значение = кол-во дубликатов имен в словаре `phonebook`. 
+`Collections.frequency(list_for_find, finding_value)`:
+
+    counter.put(name, Collections.frequency(phonebook.values(), name));
+
+Пример, перебор HashMap в цикле. Словарь `example`. Интерфейс `Map.Entry` - обозначает как раз пару “ключ-значение” 
+внутри словаря. Метод `entrySet()` возвращает список всех пар в нашей HashMap (поскольку наша мапа состоит как раз из 
+таких пар-`entry`, то мы перебираем именно пары, а не отдельно ключи или значения).
+
+    for (Map.Entry entry: example.entrySet()) {
+        System.out.println(entry);
+    }
+
+Вывод:
+
+    ke1=value1
+    ke2=value2
+
+Пример, какие элементы списка `ArrayList<>(example)` дублируются и сколько раз в `map`. `entry` - пара из словаря 
+`key=value`. `entry.getKey()` - получить ключ пары. `Collections.frequency(example, entry.getKey())` - счетчик 
+совпадений ключа в списке `example`.
+
+    for (Map.Entry entry: map.entrySet()) {
+        int count = Collections.frequency(example, entry.getKey());
+        if (count > 1) System.out.printf("%s -> %d\n", entry.getKey(), count);
+    }
+
+### TreeMap.
+
+#### Sort TreeMap.
+Пример упорядочивания значений `map` по убыванию, где `list` - упорядоченный список. 
+
+    import java.util.stream.Collectors;
+
+    List<Map.Entry<String, Integer>> list = map.entrySet().stream()
+    .sorted((e1, e2) -> -e1.getValue().compareTo(e2.getValue()))
+    .collect(Collectors.toList());
+
+Другой пример с приведением типов к `Integer` и `String`.
+
+    TreeMap<Integer, String> names_sort = new TreeMap<>();
+    for (Map.Entry entry: counter.entrySet()) {
+        names_sort.put((Integer) entry.getValue(), entry.getKey().toString());
+    }
+
+
+#### Sources for Map.
+1. [HashMap в Java— что за карта такая?](https://javarush.com/groups/posts/1940-klass-hashmap-)
+2. [Сортировка TreeMap по значению (BigDecimal)](https://ru.stackoverflow.com/questions/647402/%d0%a1%d0%be%d1%80%d1%82%d0%b8%d1%80%d0%be%d0%b2%d0%ba%d0%b0-treemap-%d0%bf%d0%be-%d0%b7%d0%bd%d0%b0%d1%87%d0%b5%d0%bd%d0%b8%d1%8e-bigdecimal)
+3. [TreeMap sort by value](https://stackoverflow.com/questions/2864840/treemap-sort-by-value)
+
 
 ## Validate data.
 
