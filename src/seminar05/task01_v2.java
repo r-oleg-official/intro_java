@@ -11,7 +11,9 @@
 
 package seminar05;
 
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class task01_v2 {
 
@@ -32,9 +34,9 @@ public class task01_v2 {
                 "Сергей Курицин 8800142421",
                 "Михаил Незлобин 880012343"};
 
-        //System.out.println(Arrays.toString(listPhones));
-
+        // Phonebook's map.
         Map<String, String> phonebook = new HashMap<>();
+        // counter - map of the name=counter.
         Map<String, Integer> counter = new HashMap<>();
         String name, phone = "";
 
@@ -45,17 +47,25 @@ public class task01_v2 {
             name = String.valueOf(sb.append(line[0] + " " + line[1]));
             phone = String.valueOf(line[2]);
             phonebook.putIfAbsent(phone, name);
-            counter.put(name, null);
+            counter.put(name, Collections.frequency(phonebook.values(), name));
         }
-        System.out.println(phonebook);
-        System.out.println(phonebook.values());
 
+        System.out.println(phonebook);
+        System.out.println();
+
+        // Finding duplicates and printing them out with the number of matches.
         List<String> names = new ArrayList<>(phonebook.values());
 
         for (Map.Entry entry: counter.entrySet()) {
             int count = Collections.frequency(names, entry.getKey());
             if (count > 1) System.out.printf("%s -> %d\n", entry.getKey(), count);
         }
+        System.out.println();
 
+        // Sort the map in descending order of names.
+        List<Map.Entry<String, Integer>> list = counter.entrySet().stream()
+                .sorted((e1, e2) -> -e1.getValue().compareTo(e2.getValue()))
+                .collect(Collectors.toList());
+        System.out.println(list);
     }
 }
