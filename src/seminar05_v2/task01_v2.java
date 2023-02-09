@@ -9,7 +9,7 @@
  * Copyright notice: by Oleg Razumov.
  */
 
-package seminar05;
+package seminar05_v2;
 
 
 import java.util.*;
